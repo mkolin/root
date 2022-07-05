@@ -422,8 +422,10 @@ llvm::Error IncrementalJIT::removeModule(const Transaction& T) {
     return llvm::Error::success();
 
   m_ResourceTrackers.erase(&T);
+
   if (Error Err = RT->remove())
     return Err;
+
   return llvm::Error::success();
 }
 

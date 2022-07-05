@@ -260,7 +260,14 @@ public:
   }
 
   std::error_code releaseMappedMemory(sys::MemoryBlock &M) override {
+  // Disabled until CallFunc is informed about unloading, and can re-generate
+  // the wrapper (if the decl is still available).
+  // See https://github.com/root-project/root/issues/10898
+#if 0
     return sys::Memory::releaseMappedMemory(M);
+#else
+    return {};
+#endif
   }
 };
 
