@@ -410,6 +410,12 @@ void IncrementalJIT::addModule(Transaction& T) {
   m_CurrentRT = RT;
 
   if (Error Err = Jit->addIRModule(RT, std::move(TSM))) {
+     // FIXME: On windows we still get duplicate symbols across modules.
+#ifdef _WIN32
+    if (Err.isA<DuplicateDefinition>())
+       llvm::consumeError(std::move(Err));
+    else
+#endif // _WIN32
     logAllUnhandledErrors(std::move(Err), errs(),
                           "[IncrementalJIT] addModule() failed: ");
     return;
