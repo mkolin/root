@@ -65,8 +65,11 @@ namespace {
         // linker that it should not error on duplicate symbols.
         // FIXME: Ideally the frontend would never emit duplicate symbols and
         // we could just use the old version of saying:
-        // GV.setLinkage(llvm::GlobalValue::ExternalLinkage);
+#ifdef _WIN32
+        GV.setLinkage(llvm::GlobalValue::ExternalLinkage);
+#else
         GV.setLinkage(llvm::GlobalValue::WeakAnyLinkage);
+#endif // _WIN32
         return true; // a change!
       }
       return false;
