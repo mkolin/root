@@ -174,6 +174,8 @@ namespace cling {
         //FIXME: Remove when the printing of type_visibility attribute is fixed.
         if (!isa<AnnotateAttr>(A))
           continue;
+        if(A->getKind() == 54)
+          continue;
         A->printPretty(Out(), m_Policy);
       }
     }
