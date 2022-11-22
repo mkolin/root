@@ -16,21 +16,6 @@
 
 #include "RConfigure.h"
 
-#ifdef R__HAS_STD_SPAN
-
 #include <span>
-
-#elif defined(R__HAS_STD_EXPERIMENTAL_SPAN)
-
-#include <experimental/span>
-namespace std {
-  using template<class T> span = experimental::span<T>;
-
-  // TODO: using make_view() overloads
-}
-
-#else
-# include "ROOT/span.hxx"
-#endif
 
 #endif
