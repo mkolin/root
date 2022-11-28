@@ -123,6 +123,7 @@ void IRMaterializationUnit::discard(const JITDylib &JD,
   auto I = SymbolToDefinition.find(Name);
   assert(I != SymbolToDefinition.end() &&
          "Symbol not provided by this MU, or previously discarded");
+  if(I == SymbolToDefinition.end()) return;
   assert(!I->second->isDeclaration() &&
          "Discard should only apply to definitions");
   I->second->setLinkage(GlobalValue::AvailableExternallyLinkage);

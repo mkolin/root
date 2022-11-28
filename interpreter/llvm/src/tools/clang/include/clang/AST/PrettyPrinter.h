@@ -66,7 +66,7 @@ struct PrintingPolicy {
         ConstantArraySizeAsWritten(false), AnonymousTagLocations(true),
         SuppressStrongLifetime(false), SuppressLifetimeQualifiers(false),
         SuppressTemplateArgsInCXXConstructors(false),
-        SuppressDefaultTemplateArgs(true), Bool(LO.Bool),
+        SuppressDefaultTemplateArgs(false), Bool(LO.Bool),
         Nullptr(LO.CPlusPlus11), Restrict(LO.C99), Alignof(LO.CPlusPlus11),
         UnderscoreAlignof(LO.C11), UseVoidForZeroParams(!LO.CPlusPlus),
         SplitTemplateClosers(!LO.CPlusPlus11), TerseOutput(false),
