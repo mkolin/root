@@ -11,9 +11,11 @@
 
 /* The system's limits.h may, in turn, try to #include_next GCC's limits.h.
    Avert this #include_next madness. */
+/* XXX Note that when using GCC 12 we require GNU limits.h to be defined
 #if defined __GNUC__ && !defined _GCC_LIMITS_H_
 #define _GCC_LIMITS_H_
 #endif
+*/
 
 /* System headers include a number of constants from POSIX in <limits.h>.
    Include it if we're hosted. */
